@@ -67,6 +67,7 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required, minLength } from "vuelidate/lib/validators";
+import TasksModel from "@/models/TasksModel";
 
 export default {
   name: "FormTask",
@@ -107,18 +108,15 @@ export default {
     },
     async salvarTask() {
       if (this.methodSave === "update") {
-        let tasks = JSON.parse(localStorage.getItem("tasks"));
-        tasks[this.$route.params.index] = this.form;
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        this.form.save();
+
         this.$router.push({ name: "listtask" });
         return;
       }
 
-      let tasks = localStorage.getItem("tasks")
-        ? JSON.parse(localStorage.getItem("tasks"))
-        : [];
-      tasks.push(this.form);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+      const task = new TasksModel(this.form);
+      task.save();
+
       this.$router.push({ name: "listtask" });
     },
   },
@@ -160,14 +158,10 @@ export default {
       }
     },
   },
-  created() {
-    if (
-      this.$route.params.index === 0 ||
-      this.$route.params.index !== undefined
-    ) {
+  async created() {
+    if (this.$route.params.id) {
       this.methodSave = "update";
-      let tasks = JSON.parse(localStorage.getItem("tasks"));
-      this.form = tasks[this.$route.params.index];
+      this.form = await TasksModel.find(this.$route.params.id);
     }
     // inicializar form com botão desabilitado
     if (this.methodSave === "new") {

@@ -4,11 +4,7 @@
       Lista de Tarefas
     </h1> -->
     <template v-if="!isTasksEmpty">
-      <div
-        class="container-conteudo"
-        v-for="(task, index) in tasks"
-        :key="index"
-      >
+      <div class="container-conteudo" v-for="task in tasks" :key="task.id">
         <v-card
           elevation="4"
           outlined
@@ -19,7 +15,7 @@
           <v-card-subtitle>{{ task.date }}</v-card-subtitle>
           <v-card-text class="black--text">{{ task.descricao }}</v-card-text>
           <v-btn
-            @click="edit(index)"
+            @click="edit(task.id)"
             small
             class="ma-2"
             outlined
@@ -39,7 +35,7 @@
                   color="black"
                   v-bind="attrs"
                   v-on="on"
-                  @click="setSelectedTask(task, index)"
+                  @click="setSelectedTask(task.id)"
                 >
                   <v-icon>{{ icons.mdiDelete }}</v-icon>
                 </v-btn>
@@ -83,6 +79,8 @@
 
 <script>
 import { mdiDelete } from "@mdi/js";
+import TasksModel from "@/models/TasksModel";
+
 export default {
   name: "ListTasks",
   data() {
@@ -95,23 +93,20 @@ export default {
       },
     };
   },
-  created() {
-    this.tasks = localStorage.getItem("tasks")
-      ? JSON.parse(localStorage.getItem("tasks"))
-      : [];
+  async created() {
+    this.tasks = await TasksModel.get();
   },
   methods: {
-    async edit(index) {
-      this.$router.push({ name: "formtask", params: { index } });
+    async edit(id) {
+      this.$router.push({ name: "formtask", params: { id } });
     },
     async confirmRemoveTask() {
-      this.tasks.splice(this.taskSelected.index, 1);
-      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      this.taskSelected.delete();
+      this.tasks = await TasksModel.get();
       this.dialog = false;
     },
-    async setSelectedTask(task, index) {
-      this.taskSelected = task;
-      this.taskSelected.index = index;
+    async setSelectedTask(id) {
+      this.taskSelected = await TasksModel.find(id);
     },
   },
   computed: {
