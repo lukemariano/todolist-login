@@ -1,64 +1,83 @@
 <template>
   <div>
-    <h1 style="text-align: center; margin-top: 20px; margin-bottom: 20px">
+    <!-- <h1 style="text-align: center; margin-top: 20px; margin-bottom: 20px">
       Lista de Tarefas
-    </h1>
-    <div class="container-conteudo" v-for="(task, index) in tasks" :key="index">
-      <v-card elevation="4" outlined shaped style="width: 50%; margin: 0 auto">
-        <v-card-title>{{ task.titulo }}</v-card-title>
-        <v-card-subtitle>{{ task.date }}</v-card-subtitle>
-        <v-card-text class="black--text">{{ task.descricao }}</v-card-text>
-        <v-btn
-          @click="edit(index)"
-          small
-          class="ma-2"
+    </h1> -->
+    <template v-if="!isTasksEmpty">
+      <div
+        class="container-conteudo"
+        v-for="(task, index) in tasks"
+        :key="index"
+      >
+        <v-card
+          elevation="4"
           outlined
-          fab
-          color="black"
+          shaped
+          style="width: 50%; margin: 0 auto"
         >
-          <v-icon>mdi-pencil</v-icon>
-        </v-btn>
-        <template>
-          <v-dialog v-model="dialog" width="500">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                small
-                class="ma-2"
-                outlined
-                fab
-                color="black"
-                v-bind="attrs"
-                v-on="on"
-                @click="setSelectedTask(task, index)"
-              >
-                <v-icon>{{ icons.mdiDelete }}</v-icon>
-              </v-btn>
-            </template>
-
-            <v-card>
-              <v-card-title class="text-h5 black" style="color: white">
-                Deseja excluir a tarefa selecionada?
-              </v-card-title>
-
-              <v-card-text>
-                Para excluir a tarefa "{{ taskSelected.titulo }}" clique em
-                deletar.
-              </v-card-text>
-
-              <v-divider></v-divider>
-
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="primary" text @click="dialog = false">
-                  Fechar
+          <v-card-title>{{ task.titulo }}</v-card-title>
+          <v-card-subtitle>{{ task.date }}</v-card-subtitle>
+          <v-card-text class="black--text">{{ task.descricao }}</v-card-text>
+          <v-btn
+            @click="edit(index)"
+            small
+            class="ma-2"
+            outlined
+            fab
+            color="black"
+          >
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+          <template>
+            <v-dialog v-model="dialog" width="500">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  small
+                  class="ma-2"
+                  outlined
+                  fab
+                  color="black"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="setSelectedTask(task, index)"
+                >
+                  <v-icon>{{ icons.mdiDelete }}</v-icon>
                 </v-btn>
-                <v-btn @click="confirmRemoveTask">Deletar</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </template>
-      </v-card>
-    </div>
+              </template>
+
+              <v-card>
+                <v-card-title class="text-h5 black" style="color: white">
+                  Deseja excluir a tarefa selecionada?
+                </v-card-title>
+
+                <v-card-text>
+                  Para excluir a tarefa "{{ taskSelected.titulo }}" clique em
+                  deletar.
+                </v-card-text>
+
+                <v-divider></v-divider>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" text @click="dialog = false">
+                    Fechar
+                  </v-btn>
+                  <v-btn @click="confirmRemoveTask">Deletar</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </template>
+        </v-card>
+      </div>
+    </template>
+    <template v-else>
+      <div class="emptyNote mt-15">
+        <img src="../assets/images/emptyNotes.svg" class="emptyNote-image" />
+        <v-btn to="/form" dense dark class="white--text mt-4"
+          >Criar tarefa</v-btn
+        >
+      </div>
+    </template>
   </div>
 </template>
 
@@ -95,11 +114,28 @@ export default {
       this.taskSelected.index = index;
     },
   },
+  computed: {
+    isTasksEmpty() {
+      return this.tasks.length === 0;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .container-conteudo {
   margin-top: 20px;
+}
+
+.emptyNote-image {
+  width: 500px;
+  height: 500px;
+}
+
+.emptyNote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>

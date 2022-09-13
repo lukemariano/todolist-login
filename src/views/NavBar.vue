@@ -3,8 +3,12 @@
     <v-app-bar dense dark>
       <v-toolbar-title class="container-nav">
         <h3 class="title-nav">TodoList</h3>
-        <a href="/"><h5 class="title-nav gray-color">Tarefas</h5></a>
-        <a href="/form"><h5 class="title-nav gray-color">Formulário</h5></a>
+        <v-btn class="button-style" to="/"
+          ><h5 class="title-nav gray-color">Tarefas</h5></v-btn
+        >
+        <v-btn class="button-style" to="/form"
+          ><h5 class="title-nav gray-color">Formulário</h5></v-btn
+        >
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -49,12 +53,11 @@ export default {
   align-items: center;
 }
 
-a {
-  text-decoration: none;
-  color: gray;
+.gray-color {
+  color: white;
 }
 
-.gray-color {
-  color: gray;
+.button-style {
+  background-color: transparent;
 }
 </style>
