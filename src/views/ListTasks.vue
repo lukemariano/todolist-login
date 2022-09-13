@@ -14,6 +14,18 @@
           <v-card-title>{{ task.titulo }}</v-card-title>
           <v-card-subtitle>{{ task.date }}</v-card-subtitle>
           <v-card-text class="black--text">{{ task.descricao }}</v-card-text>
+
+          <v-btn
+            @click="updateStatus(task.id, status.ARCHIVED)"
+            small
+            class="ma-2"
+            outlined
+            fab
+            color="black"
+          >
+            <i class="fa-regular fa-folder-open"></i>
+          </v-btn>
+
           <v-btn
             @click="edit(task.id)"
             small
@@ -80,6 +92,7 @@
 <script>
 import { mdiDelete } from "@mdi/js";
 import TasksModel from "@/models/TasksModel";
+import Status from "@/valueObjects/status";
 
 export default {
   name: "ListTasks",
@@ -88,6 +101,7 @@ export default {
       tasks: [],
       dialog: false,
       taskSelected: [],
+      status: Status,
       icons: {
         mdiDelete,
       },
@@ -107,6 +121,15 @@ export default {
     },
     async setSelectedTask(id) {
       this.taskSelected = await TasksModel.find(id);
+    },
+    async updateStatus(id, status) {
+      let task = await TasksModel.find(id);
+      task.status = status;
+      await task.save();
+
+      this.tasks = await TasksModel.params({
+        status: this.status.OPEN + "&status=" + this.status.FINISHED,
+      }).get();
     },
   },
   computed: {

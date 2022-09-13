@@ -4,7 +4,50 @@
       "id": 1,
       "titulo": "teste json-server",
       "descricao": "testing",
-      "date": "13-09-2022"
+      "date": "13-09-2022",
+      "status": 1
+    },
+    {
+      "titulo": "testando status",
+      "descricao": "alo status",
+      "status": 2,
+      "date": "2022-09-13",
+      "id": 2
+    },
+    {
+      "titulo": "DFDSFSD",
+      "descricao": "FSDFSDFSD",
+      "status": 3,
+      "date": "2022-09-13",
+      "id": 3
+    },
+    {
+      "titulo": "SDFSDF",
+      "descricao": "SDFSDFSD",
+      "status": 3,
+      "date": "2022-09-13",
+      "id": 4
+    },
+    {
+      "titulo": "FDGDFGDF",
+      "descricao": "DFGDFGFD",
+      "status": 3,
+      "date": "2022-09-13",
+      "id": 5
+    },
+    {
+      "titulo": "FGTDHGFH",
+      "descricao": "FGFHFG",
+      "status": 3,
+      "date": "2022-09-13",
+      "id": 6
+    },
+    {
+      "titulo": "testando gamb",
+      "descricao": "luquinhas god",
+      "status": 2,
+      "date": "2022-09-13",
+      "id": 7
     }
   ]
 }

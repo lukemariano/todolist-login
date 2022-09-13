@@ -22,7 +22,12 @@
           @input="$v.form.descricao.$touch()"
           @blur="$v.form.descricao.$touch()"
         ></v-text-field>
-        <v-select v-model="form.tag" label="Tag"></v-select>
+        <v-select
+          v-model="form.status"
+          label="Status"
+          id="status"
+          :items="optionsList"
+        ></v-select>
         <v-dialog
           ref="dialog"
           v-model="modal"
@@ -50,6 +55,7 @@
             </v-btn>
           </v-date-picker>
         </v-dialog>
+
         <v-btn
           :disabled="!errorTitulo && !errorDescricao ? false : true"
           type="submit"
@@ -68,6 +74,7 @@
 import { validationMixin } from "vuelidate";
 import { required, minLength } from "vuelidate/lib/validators";
 import TasksModel from "@/models/TasksModel";
+import Status from "@/valueObjects/status.js";
 
 export default {
   name: "FormTask",
@@ -79,12 +86,17 @@ export default {
     form: {
       titulo: "",
       descricao: null,
-      tag: null,
+      status: Status.OPEN,
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
         .toISOString()
         .substr(0, 10),
     },
     methodSave: "new",
+    optionsList: [
+      { value: Status.OPEN, text: "Aberto" },
+      { value: Status.FINISHED, text: "Concluído" },
+      { value: Status.ARCHIVED, text: "Arquivado" },
+    ],
   }),
   mixins: [validationMixin],
   validations: {
@@ -107,6 +119,10 @@ export default {
       this.form.tag = null;
     },
     async salvarTask() {
+      // valida form e só salva se não tiverem erros
+      // this.$v.$touch();
+      // if (this.$v.$error) return;
+
       if (this.methodSave === "update") {
         this.form.save();
 
