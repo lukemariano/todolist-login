@@ -5,7 +5,7 @@
       "titulo": "teste json-server",
       "descricao": "testing",
       "date": "13-09-2022",
-      "status": 1
+      "status": 2
     },
     {
       "titulo": "testando status",
@@ -24,7 +24,7 @@
     {
       "titulo": "SDFSDF",
       "descricao": "SDFSDFSD",
-      "status": 3,
+      "status": 2,
       "date": "2022-09-13",
       "id": 4
     },
@@ -45,9 +45,30 @@
     {
       "titulo": "testando gamb",
       "descricao": "luquinhas god",
-      "status": 2,
+      "status": 3,
       "date": "2022-09-13",
       "id": 7
+    },
+    {
+      "titulo": "Concluido ",
+      "descricao": "estilo aplicado",
+      "status": 3,
+      "date": "2022-09-14",
+      "id": 8
+    },
+    {
+      "titulo": "asasas",
+      "descricao": "asasa",
+      "status": 3,
+      "date": "2022-09-14",
+      "id": 9
+    },
+    {
+      "titulo": "dfdsfd",
+      "descricao": "dfdfd",
+      "status": 3,
+      "date": "2022-09-14",
+      "id": 10
     }
   ]
 }

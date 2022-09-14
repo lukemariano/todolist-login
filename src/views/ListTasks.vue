@@ -1,8 +1,30 @@
 <template>
   <div>
-    <!-- <h1 style="text-align: center; margin-top: 20px; margin-bottom: 20px">
-      Lista de Tarefas
-    </h1> -->
+    <div class="container-filtro">
+      <form class="mb-2 style-form mt-12">
+        <v-text-field
+          v-model="filter.titulo"
+          id="titulo"
+          label="Ex: Estudar para a prova"
+          class="mr-2"
+        >
+        </v-text-field>
+
+        <v-select
+          d-inline
+          v-model="filter.status"
+          :items="optionsList"
+          class="mr-2 style-filtro"
+        >
+        </v-select>
+        <v-btn @click="filterTasks" dense dark class="white--text mr-4 ml-2"
+          >Buscar</v-btn
+        >
+        <v-btn @click="clearFilter" dense dark class="white--text"
+          >Limpar filtro</v-btn
+        >
+      </form>
+    </div>
     <template v-if="!isTasksEmpty">
       <div class="container-conteudo" v-for="task in tasks" :key="task.id">
         <v-card
@@ -11,9 +33,26 @@
           shaped
           style="width: 50%; margin: 0 auto"
         >
-          <v-card-title>{{ task.titulo }}</v-card-title>
+          <v-card-title :class="{ finishedTask: isFinished(task) }">{{
+            task.titulo
+          }}</v-card-title>
           <v-card-subtitle>{{ task.date }}</v-card-subtitle>
-          <v-card-text class="black--text">{{ task.descricao }}</v-card-text>
+          <v-card-text
+            class="black--text"
+            :class="{ finishedTask: isFinished(task) }"
+            >{{ task.descricao }}</v-card-text
+          >
+
+          <v-btn
+            @click="updateStatus(task.id, status.FINISHED)"
+            small
+            class="ma-2"
+            outlined
+            fab
+            color="black"
+          >
+            <i class="fa-solid fa-clipboard-check"></i>
+          </v-btn>
 
           <v-btn
             @click="updateStatus(task.id, status.ARCHIVED)"
@@ -105,10 +144,22 @@ export default {
       icons: {
         mdiDelete,
       },
+      filter: {
+        titulo: null,
+        status: null,
+      },
+      optionsList: [
+        { value: null, text: "Selecione algum status" },
+        { value: Status.OPEN, text: "Aberto" },
+        { value: Status.FINISHED, text: "Concluído" },
+        { value: Status.ARCHIVED, text: "Arquivado" },
+      ],
     };
   },
   async created() {
-    this.tasks = await TasksModel.get();
+    this.tasks = await TasksModel.params({
+      status: this.status.OPEN + "&status=" + this.status.FINISHED,
+    }).get();
   },
   methods: {
     async edit(id) {
@@ -116,7 +167,9 @@ export default {
     },
     async confirmRemoveTask() {
       this.taskSelected.delete();
-      this.tasks = await TasksModel.get();
+      this.tasks = await TasksModel.params({
+        status: this.status.OPEN + "&status=" + this.status.FINISHED,
+      }).get();
       this.dialog = false;
     },
     async setSelectedTask(id) {
@@ -127,6 +180,33 @@ export default {
       task.status = status;
       await task.save();
 
+      this.tasks = await TasksModel.params({
+        status: this.status.OPEN + "&status=" + this.status.FINISHED,
+      }).get();
+    },
+    isFinished(tarefa) {
+      return tarefa.status === this.status.FINISHED;
+    },
+
+    async filterTasks() {
+      // desestruturação
+      let filter = { ...this.filter };
+      filter = this.clean(filter);
+      this.tasks = await TasksModel.params(filter).get();
+    },
+    clean(obj) {
+      for (var propName in obj) {
+        if (obj[propName] === null || obj[propName] === undefined) {
+          delete obj[propName];
+        }
+      }
+      return obj;
+    },
+    async clearFilter() {
+      this.filter = {
+        titulo: null,
+        status: null,
+      };
       this.tasks = await TasksModel.params({
         status: this.status.OPEN + "&status=" + this.status.FINISHED,
       }).get();
@@ -155,5 +235,27 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.finishedTask {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.container-filtro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.style-form {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.style-filtro {
+  width: 1px;
 }
 </style>
