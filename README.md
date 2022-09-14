@@ -1,4 +1,5 @@
 # todolist-login
+author: Lucas Mariano da Silva
 
 ## Project setup
 
