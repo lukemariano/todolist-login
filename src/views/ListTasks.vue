@@ -25,7 +25,24 @@
         >
       </form>
     </div>
-    <template v-if="!isTasksEmpty">
+    <template v-if="isLoading">
+      <div class="loading-spin">
+        <v-progress-circular
+          :size="70"
+          indeterminate
+          color="black"
+        ></v-progress-circular>
+      </div>
+    </template>
+    <template v-if="isTasksEmpty && !isLoading">
+      <div class="emptyNote mt-15">
+        <img src="../assets/images/emptyNotes.svg" class="emptyNote-image" />
+        <v-btn to="/form" dense dark class="white--text mt-4"
+          >Criar tarefa</v-btn
+        >
+      </div>
+    </template>
+    <template v-if="!isTasksEmpty && !isLoading">
       <div class="container-conteudo" v-for="task in tasks" :key="task.id">
         <v-card
           elevation="4"
@@ -54,39 +71,58 @@
             :class="{ finishedTask: isFinished(task) }"
             >{{ task.descricao }}</v-card-text
           >
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                @click="updateStatus(task.id, status.FINISHED)"
+                small
+                class="ma-2"
+                outlined
+                fab
+                color="black"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <i class="fa-solid fa-clipboard-check"></i>
+              </v-btn>
+            </template>
+            <span>Concluir tarefa</span>
+          </v-tooltip>
 
-          <v-btn
-            @click="updateStatus(task.id, status.FINISHED)"
-            small
-            class="ma-2"
-            outlined
-            fab
-            color="black"
-          >
-            <i class="fa-solid fa-clipboard-check"></i>
-          </v-btn>
-
-          <v-btn
-            @click="updateStatus(task.id, status.ARCHIVED)"
-            small
-            class="ma-2"
-            outlined
-            fab
-            color="black"
-          >
-            <i class="fa-regular fa-folder-open"></i>
-          </v-btn>
-
-          <v-btn
-            @click="edit(task.id)"
-            small
-            class="ma-2"
-            outlined
-            fab
-            color="black"
-          >
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                @click="updateStatus(task.id, status.ARCHIVED)"
+                small
+                class="ma-2"
+                outlined
+                fab
+                color="black"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <i class="fa-regular fa-folder-open"></i>
+              </v-btn>
+            </template>
+            <span>Arquivar tarefa</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                @click="edit(task.id)"
+                small
+                class="ma-2"
+                outlined
+                fab
+                color="black"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+            </template>
+            <span>Editar tarefa</span>
+          </v-tooltip>
           <template>
             <v-dialog v-model="dialog" width="500">
               <template v-slot:activator="{ on, attrs }">
@@ -129,14 +165,6 @@
         </v-card>
       </div>
     </template>
-    <template v-else>
-      <div class="emptyNote mt-15">
-        <img src="../assets/images/emptyNotes.svg" class="emptyNote-image" />
-        <v-btn to="/form" dense dark class="white--text mt-4"
-          >Criar tarefa</v-btn
-        >
-      </div>
-    </template>
   </div>
 </template>
 
@@ -166,12 +194,16 @@ export default {
         { value: Status.FINISHED, text: "Concluído" },
         { value: Status.ARCHIVED, text: "Arquivado" },
       ],
+      isLoading: false,
     };
   },
   async created() {
+    this.isLoading = true;
     this.tasks = await TasksModel.params({
       status: this.status.OPEN + "&status=" + this.status.FINISHED,
     }).get();
+
+    this.isLoading = false;
   },
   methods: {
     async edit(id) {
@@ -302,5 +334,12 @@ export default {
 .style-title-date {
   display: flex;
   justify-content: space-between;
+}
+
+.loading-spin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65vh;
 }
 </style>

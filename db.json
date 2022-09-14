@@ -3,7 +3,7 @@
     {
       "titulo": "testando status",
       "descricao": "alo status",
-      "status": 2,
+      "status": 3,
       "date": "2022-09-13",
       "id": 2
     },
@@ -55,6 +55,20 @@
       "status": 3,
       "date": "2022-09-14",
       "id": 10
+    },
+    {
+      "titulo": "Testando alterações de template-if",
+      "descricao": "olá tarefa",
+      "status": 2,
+      "date": "2022-09-14",
+      "id": 11
+    },
+    {
+      "titulo": "testando loading",
+      "descricao": "ola loading",
+      "status": 1,
+      "date": "2022-09-14",
+      "id": 12
     }
   ]
 }
