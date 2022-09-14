@@ -56,7 +56,7 @@
             @blur="$v.form.confirmeSenha.$touch()"
           ></v-text-field>
 
-          <v-btn @click="login" color="primary btn-ajuste mb-4">
+          <v-btn @click="register" color="primary btn-ajuste mb-4">
             <i class="fas fa-sign-in-alt"></i>Cadastrar</v-btn
           >
           <hr />
@@ -77,6 +77,7 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
+import UsersModel from "@/models/UsersModel";
 
 export default {
   data() {
@@ -111,11 +112,16 @@ export default {
   },
   mixins: [validationMixin],
   methods: {
-    login() {
+    register() {
       this.$v.$touch();
       if (this.$v.$error) {
         return;
       }
+
+      const user = new UsersModel(this.form);
+      user.save();
+
+      this.goToLogin();
     },
     goToLogin() {
       this.$router.push({ name: "login" });

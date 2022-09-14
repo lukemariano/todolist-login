@@ -77,5 +77,14 @@
       "date": "2022-09-14",
       "id": 13
     }
+  ],
+  "users": [
+    {
+      "email": "teste@email.com",
+      "senha": "123456",
+      "nome": "Teste Validation",
+      "confirmeSenha": "123456",
+      "id": 1
+    }
   ]
 }
