@@ -28,6 +28,7 @@
             @input="$v.form.senha.$touch()"
             @blur="$v.form.senha.$touch()"
           ></v-text-field>
+          <p class="red--text">{{ errorLogin }}</p>
           <v-btn small class="forget-password mb-3 primary--text"
             >Esqueceu a sua senha?</v-btn
           >
@@ -56,10 +57,12 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required, minLength, email } from "vuelidate/lib/validators";
+import UsersModel from "@/models/UsersModel";
 
 export default {
   data() {
     return {
+      errorLogin: null,
       form: {
         email: null,
         senha: null,
@@ -80,11 +83,45 @@ export default {
   },
   mixins: [validationMixin],
   methods: {
-    login() {
+    async login() {
       this.$v.$touch();
       if (this.$v.$error) {
         return;
       }
+
+      let user = await UsersModel.params({ email: this.form.email }).get();
+
+      //validação email
+      if (!user || !user[0] || !user[0].email) {
+        this.errorLogin = "Email e/ou senha incorretos.";
+        this.clearForm();
+        setTimeout(() => {
+          this.errorLogin = null;
+        }, 4000);
+        return;
+      }
+
+      user = user[0];
+
+      // validação senha
+      if (user.senha !== this.form.senha) {
+        this.errorLogin = "Email e/ou senha incorretos.";
+        this.clearForm();
+        setTimeout(() => {
+          this.errorLogin = null;
+        }, 4000);
+        return;
+      }
+
+      // se logado com sucesso, realizar salvamento das infos no navegador do usuário
+      localStorage.setItem("authUser", JSON.stringify(user));
+      this.$router.push({ name: "listtask" });
+    },
+    clearForm() {
+      this.form = {
+        email: null,
+        senha: null,
+      };
     },
     register() {
       this.$router.push({ name: "register" });
