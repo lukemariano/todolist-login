@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavBar />
+    <NavBar v-if="notIsLoginPage" />
     <v-main>
       <transition name="fade" mode="out-in">
         <router-view />
@@ -17,6 +17,11 @@ export default {
     //
   }),
   components: { NavBar },
+  computed: {
+    notIsLoginPage() {
+      return this.$route.name !== "login";
+    },
+  },
 };
 </script>
 
