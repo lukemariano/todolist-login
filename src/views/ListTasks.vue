@@ -39,7 +39,7 @@
             }}</v-card-title>
             <v-card-title
               ><v-alert
-                color="#2A3B4D"
+                :color="colorOverdue(task.date, task.status)"
                 dark
                 icon="mdi-firework"
                 dense
@@ -229,6 +229,27 @@ export default {
       }
       //2022-09-14 --> [2022, 09, 14]
       return data.split("-").reverse().join("/");
+    },
+    colorOverdue(data, status) {
+      if (!data) {
+        return "#2A3B4D";
+      }
+
+      if (status === this.status.FINISHED) {
+        return "success";
+      }
+      // data atual no formato americano
+      let dateNow = new Date().toISOString().split("T")[0];
+
+      if (data === dateNow) {
+        return "warning";
+      }
+
+      if (data < dateNow) {
+        return "error";
+      }
+
+      return "#2A3B4D";
     },
   },
   computed: {

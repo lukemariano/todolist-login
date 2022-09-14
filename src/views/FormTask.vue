@@ -45,7 +45,7 @@
               v-on="on"
             ></v-text-field>
           </template>
-          <v-date-picker v-model="form.date" scrollable>
+          <v-date-picker :min="getToday()" v-model="form.date" scrollable>
             <v-spacer></v-spacer>
             <v-btn text color="primary" @click="modal = false">
               Cancelar
@@ -134,6 +134,9 @@ export default {
       task.save();
 
       this.$router.push({ name: "listtask" });
+    },
+    getToday() {
+      return new Date().toISOString().split("T")[0];
     },
   },
   computed: {
