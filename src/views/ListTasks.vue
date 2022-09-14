@@ -33,10 +33,22 @@
           shaped
           style="width: 50%; margin: 0 auto"
         >
-          <v-card-title :class="{ finishedTask: isFinished(task) }">{{
-            task.titulo
-          }}</v-card-title>
-          <v-card-subtitle>{{ task.date }}</v-card-subtitle>
+          <div class="style-title-date">
+            <v-card-title :class="{ finishedTask: isFinished(task) }">{{
+              task.titulo
+            }}</v-card-title>
+            <v-card-title
+              ><v-alert
+                color="#2A3B4D"
+                dark
+                icon="mdi-firework"
+                dense
+                class="text-subtitle2"
+              >
+                {{ overduePresente(task.date) }}
+              </v-alert></v-card-title
+            >
+          </div>
           <v-card-text
             class="black--text"
             :class="{ finishedTask: isFinished(task) }"
@@ -211,6 +223,13 @@ export default {
         status: this.status.OPEN + "&status=" + this.status.FINISHED,
       }).get();
     },
+    overduePresente(data) {
+      if (!data) {
+        return;
+      }
+      //2022-09-14 --> [2022, 09, 14]
+      return data.split("-").reverse().join("/");
+    },
   },
   computed: {
     isTasksEmpty() {
@@ -257,5 +276,10 @@ export default {
 
 .style-filtro {
   width: 1px;
+}
+
+.style-title-date {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

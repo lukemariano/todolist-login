@@ -38,7 +38,7 @@
           <template v-slot:activator="{ on, attrs }">
             <v-text-field
               v-model="form.date"
-              label="Picker in dialog"
+              label="Data de vencimento para a tarefa"
               prepend-icon="mdi-calendar"
               readonly
               v-bind="attrs"
