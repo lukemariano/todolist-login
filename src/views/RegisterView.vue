@@ -1,9 +1,9 @@
 <template>
-  <v-row class="row-login fill-login">
-    <v-col sm="7" class="flex-login">
+  <v-row class="row-register fill-register">
+    <v-col sm="7" class="flex-register">
       <img src="../assets/images/create.svg" />
     </v-col>
-    <v-col sm="5" class="flex-login right-register">
+    <v-col sm="5" class="flex-register right-register">
       <div class="col-6">
         <h2 class="mb-6 text-center title-register">Faça o seu cadastro</h2>
         <form>
@@ -174,16 +174,16 @@ export default {
   text-decoration: none;
 }
 
-.row-login {
+.row-register {
   margin-left: 0;
 }
 
-.fill-login {
+.fill-register {
   width: 100%;
   height: 100vh;
 }
 
-.flex-login {
+.flex-register {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -195,15 +195,6 @@ export default {
 
 .btn-ajuste {
   width: 100%;
-}
-
-.forget-password {
-  background-color: transparent !important;
-  border: none !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
-  text-align: left;
-  padding: 0 !important;
 }
 
 .title-register {
