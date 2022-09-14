@@ -90,6 +90,7 @@ export default {
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
         .toISOString()
         .substr(0, 10),
+      userId: JSON.parse(localStorage.getItem("authUser")).id,
     },
     methodSave: "new",
     optionsList: [
