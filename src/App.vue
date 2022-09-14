@@ -19,7 +19,7 @@ export default {
   components: { NavBar },
   computed: {
     notIsLoginPage() {
-      return this.$route.name !== "login";
+      return this.$route.name !== "login" && this.$route.name !== "register";
     },
   },
 };
