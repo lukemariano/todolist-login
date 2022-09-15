@@ -115,7 +115,7 @@ export default {
 
       // se logado com sucesso, realizar salvamento das infos no navegador do usuário
       localStorage.setItem("authUser", JSON.stringify(user));
-      this.$router.push({ name: "listtask" });
+      this.$router.push({ name: "dashboard" });
     },
     clearForm() {
       this.form = {

@@ -24,7 +24,7 @@
         ></v-text-field>
         <v-select
           v-model="form.groups"
-          label="Grupo"
+          label="Selecione uma categoria"
           id="groups"
           :items="form.groups"
         >

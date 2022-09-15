@@ -55,6 +55,7 @@
           outlined
           shaped
           style="width: 50%; margin: 0 auto"
+          class="mb-8"
         >
           <div class="style-title-date">
             <v-card-title :class="{ finishedTask: isFinished(task) }"
