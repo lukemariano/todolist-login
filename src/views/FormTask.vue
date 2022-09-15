@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="main-conteudo">
-      <h1>Criar nova tarefa:</h1>
+      <h1>{{ tituloForm.toUpperCase() }}</h1>
       <v-alert shaped outlined type="success" v-show="toast">
         I'm a shaped alert with a outline option
       </v-alert>
@@ -91,6 +91,7 @@ export default {
     toast: false,
     errorTitulo: null,
     errorDescricao: null,
+    tituloForm: "Criar nova tarefa:",
     form: {
       titulo: "",
       descricao: null,
@@ -198,6 +199,7 @@ export default {
     if (this.$route.params.id) {
       this.methodSave = "update";
       this.form = await TasksModel.find(this.$route.params.id);
+      this.tituloForm = "Editar tarefa:";
     }
     // inicializar form com botão desabilitado
     if (this.methodSave === "new") {

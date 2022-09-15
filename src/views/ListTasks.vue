@@ -74,7 +74,7 @@
                 class="text-subtitle2"
               >
                 {{ overduePresente(task.date) }} </v-alert
-              ><v-alert shaped dark color="success">
+              ><v-alert shaped dark color="purple">
                 {{ task.groups }}
               </v-alert></v-card-title
             >

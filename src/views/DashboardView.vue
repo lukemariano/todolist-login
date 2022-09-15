@@ -31,13 +31,18 @@
           icon="mdi-account"
           class="mt-15"
         >
-          Usuário: <strong>{{ userName }}</strong>
+          <span class="text-h6"
+            >Usuário: <strong>{{ userName }}</strong></span
+          >
         </v-alert>
-        <v-container class="purple lighten-5 rounded-lg altura-dinamica mt-5">
+        <v-container
+          class="purple lighten-5 rounded-lg altura-dinamica mt-5"
+          fluid
+        >
           <div class="d-flex justify-center">
             <h2 class="mt-2 mb-10">Quantidade de tarefas por categoria:</h2>
           </div>
-          <v-row no-gutters style="height: 150px">
+          <v-row no-gutters style="height: fit-content">
             <v-col>
               <div class="d-flex align-center justify-center">
                 <div
@@ -45,15 +50,21 @@
                   v-for="(group, index) in contagemGroups"
                   :key="index"
                 >
-                  {{ index }}
+                  <v-alert shaped dark color="purple">
+                    <p class="font-weight-bold text-h6" color="white">
+                      {{ index }}
+                    </p>
+                  </v-alert>
                   <v-progress-circular
                     :rotate="360"
-                    :size="100"
-                    :width="15"
+                    :size="110"
+                    :width="18"
                     :value="(group * 100) / tasks.length"
                     color="purple dark"
                   >
-                    {{ (group * 100) / tasks.length }}%
+                    <span class="font-weight-bold text-h6"
+                      >{{ (group * 100) / tasks.length }}%</span
+                    >
                   </v-progress-circular>
                 </div>
               </div>
@@ -121,7 +132,6 @@ export default {
     this.tasks = await this.getTasks();
     await this.getNameUser();
     this.contagemGroups = this.countGroups();
-    this.logicaCountGroups();
   },
 };
 </script>
@@ -135,5 +145,6 @@ export default {
 
 .altura-dinamica {
   height: fit-content !important;
+  max-height: fit-content !important;
 }
 </style>
