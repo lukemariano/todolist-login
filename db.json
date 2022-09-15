@@ -3,7 +3,7 @@
     {
       "titulo": "Tarefinha do luquinhas com userId",
       "descricao": "aprimorar conhecimentos",
-      "status": 1,
+      "status": 2,
       "date": "2022-09-14",
       "userId": 1,
       "id": 1
@@ -11,18 +11,43 @@
     {
       "titulo": "Testando user get tasks",
       "descricao": "testing",
-      "status": 1,
+      "status": 2,
       "date": "2022-09-15",
       "userId": 1,
       "id": 2
     },
     {
-      "titulo": "Tarefa userId2",
+      "titulo": "testando loading",
       "descricao": "testing",
+      "status": 3,
+      "date": "2022-09-15",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "titulo": "adsdsfdf",
+      "descricao": "dfdfdf",
+      "status": 3,
+      "date": "2022-09-15",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "titulo": "User task 2",
+      "descricao": "ola tarefas",
       "status": 1,
       "date": "2022-09-15",
       "userId": 2,
-      "id": 3
+      "id": 6
+    },
+    {
+      "titulo": "Testando grupos",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 1,
+      "groups": "Estudos",
+      "id": 7
     }
   ],
   "users": [
@@ -39,6 +64,20 @@
       "nome": "Lucas Mariano",
       "confirmeSenha": "123456",
       "id": 2
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "tipo": "Financeiro"
+    },
+    {
+      "id": 2,
+      "tipo": "Estudos"
+    },
+    {
+      "id": 3,
+      "tipo": "Fitness"
     }
   ]
 }

@@ -9,6 +9,9 @@
         <v-btn class="button-style" to="/form"
           ><h5 class="title-nav gray-color">Formulário</h5></v-btn
         >
+        <v-btn class="button-style" to="/dashboard"
+          ><h5 class="title-nav gray-color">Dashboard</h5></v-btn
+        >
       </v-toolbar-title>
       <v-spacer></v-spacer>
 

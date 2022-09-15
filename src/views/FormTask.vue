@@ -23,6 +23,13 @@
           @blur="$v.form.descricao.$touch()"
         ></v-text-field>
         <v-select
+          v-model="form.groups"
+          label="Grupo"
+          id="groups"
+          :items="form.groups"
+        >
+        </v-select>
+        <v-select
           v-model="form.status"
           label="Status"
           id="status"
@@ -75,6 +82,7 @@ import { validationMixin } from "vuelidate";
 import { required, minLength } from "vuelidate/lib/validators";
 import TasksModel from "@/models/TasksModel";
 import Status from "@/valueObjects/status.js";
+import GroupsModel from "@/models/GroupsModel";
 
 export default {
   name: "FormTask",
@@ -91,6 +99,7 @@ export default {
         .toISOString()
         .substr(0, 10),
       userId: JSON.parse(localStorage.getItem("authUser")).id,
+      groups: [],
     },
     methodSave: "new",
     optionsList: [
@@ -118,6 +127,7 @@ export default {
       this.form.titulo = null;
       this.form.descricao = null;
       this.form.tag = null;
+      this.form.groups = null;
     },
     async salvarTask() {
       // valida form e só salva se não tiverem erros
@@ -138,6 +148,12 @@ export default {
     },
     getToday() {
       return new Date().toISOString().split("T")[0];
+    },
+    async getGroups() {
+      let groups = await GroupsModel.get();
+      for (let group of groups) {
+        this.form.groups.push(group.tipo);
+      }
     },
   },
   computed: {
@@ -187,6 +203,7 @@ export default {
     if (this.methodSave === "new") {
       this.errorTitulo = this.tituloErrors;
       this.errorDescricao = this.descricaoErrors;
+      this.getGroups();
     }
   },
 };

@@ -200,7 +200,6 @@ export default {
   async created() {
     this.isLoading = true;
     this.tasks = await this.getTasks();
-
     this.isLoading = false;
   },
   methods: {
@@ -277,11 +276,11 @@ export default {
       return "#2A3B4D";
     },
     async getTasks() {
-      this.isLoading = true;
-      let self = this;
-      setTimeout(function () {
-        self.isLoading = false;
-      }, 1000);
+      // this.isLoading = true;
+      // let self = this;
+      // setTimeout(function () {
+      //   self.isLoading = false;
+      // }, 500);
       return await TasksModel.params({
         userId: JSON.parse(localStorage.getItem("authUser")).id,
         status: this.status.OPEN + "&status=" + this.status.FINISHED,
