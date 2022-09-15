@@ -5,6 +5,7 @@ import FormTask from "../views/FormTask.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import DashboardView from "../views/DashboardView.vue";
+import FormCategoria from "../views/FormCategoria.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: DashboardView,
+  },
+  {
+    path: "/formCategoria",
+    name: "formCategoria",
+    component: FormCategoria,
   },
 ];
 

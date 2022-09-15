@@ -107,6 +107,24 @@
       "userId": 2,
       "groups": "Financeiro",
       "id": 13
+    },
+    {
+      "titulo": "Testando atualização da página",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "groups": "Estudos",
+      "id": 14
+    },
+    {
+      "titulo": "Testando categorias adicionadas",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "groups": "Programação",
+      "id": 15
     }
   ],
   "users": [
@@ -144,6 +162,22 @@
     {
       "id": 3,
       "tipo": "Fitness"
+    },
+    {
+      "tipo": "Metas",
+      "id": 4
+    },
+    {
+      "tipo": "Programação",
+      "id": 5
+    },
+    {
+      "categoria": "Exercicio",
+      "id": 6
+    },
+    {
+      "tipo": "Testing",
+      "id": 7
     }
   ]
 }

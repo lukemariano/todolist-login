@@ -63,7 +63,7 @@
                     color="purple dark"
                   >
                     <span class="font-weight-bold text-h6"
-                      >{{ (group * 100) / tasks.length }}%</span
+                      >{{ ((group * 100) / tasks.length).toFixed(1) }}%</span
                     >
                   </v-progress-circular>
                 </div>
@@ -71,6 +71,9 @@
             </v-col>
           </v-row>
         </v-container>
+        <v-btn to="/formCategoria" class="mt-9 white--text" color="purple"
+          >Adicionar Categoria</v-btn
+        >
       </div>
     </template>
   </div>

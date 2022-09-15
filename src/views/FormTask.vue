@@ -65,7 +65,6 @@
 
         <v-btn
           :disabled="!errorTitulo && !errorDescricao ? false : true"
-          type="submit"
           class="mr-4"
           @click="salvarTask"
         >
@@ -205,7 +204,9 @@ export default {
     if (this.methodSave === "new") {
       this.errorTitulo = this.tituloErrors;
       this.errorDescricao = this.descricaoErrors;
-      this.getGroups();
+      await this.getGroups();
+      console.log(this.form.groups);
+      // await this.getGroups();
     }
   },
 };
