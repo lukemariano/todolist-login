@@ -37,11 +37,15 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### App preview
 ![image](https://user-images.githubusercontent.com/104439152/190504778-b19f5555-8dac-4efa-a091-e3d0510c64f9.png)
 
-### Login screen
-![image](https://user-images.githubusercontent.com/104439152/190237941-762fafd1-e4d0-4e7b-90a9-44168ec88065.png)
-
 ### Dashboard Preview
 ![image](https://user-images.githubusercontent.com/104439152/190504677-44aa785b-6b99-4faa-9dd7-2369b2c41b99.png)
+
+### Login Screen
+![image](https://user-images.githubusercontent.com/104439152/190237941-762fafd1-e4d0-4e7b-90a9-44168ec88065.png)
+
+
+### Register Screen
+![image](https://user-images.githubusercontent.com/104439152/190504971-66026c21-2576-4ef1-a15d-4ce970b246f6.png)
 
 
 
