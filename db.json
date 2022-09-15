@@ -39,7 +39,7 @@
     {
       "titulo": "User task 2",
       "descricao": "ola tarefas",
-      "status": 1,
+      "status": 2,
       "date": "2022-09-15",
       "groups": "Estudos",
       "userId": 2,
@@ -57,7 +57,7 @@
     {
       "titulo": "Teste",
       "descricao": "testing",
-      "status": 1,
+      "status": 3,
       "date": "2022-09-15",
       "userId": 3,
       "groups": "Fitness",

@@ -52,9 +52,9 @@
         >
           <div class="style-title-date">
             <v-card-title :class="{ finishedTask: isFinished(task) }">{{
-              task.titulo
+              task.titulo.toUpperCase()
             }}</v-card-title>
-            <v-card-title
+            <v-card-title class="d-flex flex-column"
               ><v-alert
                 :color="colorOverdue(task.date, task.status)"
                 dark
@@ -62,7 +62,9 @@
                 dense
                 class="text-subtitle2"
               >
-                {{ overduePresente(task.date) }}
+                {{ overduePresente(task.date) }} </v-alert
+              ><v-alert shaped dark color="success">
+                {{ task.groups }}
               </v-alert></v-card-title
             >
           </div>
@@ -327,11 +329,11 @@ export default {
 .style-form {
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 55%;
 }
 
 .style-filtro {
-  width: 1px;
+  width: 00px;
 }
 
 .style-title-date {

@@ -33,8 +33,10 @@
         >
           Usuário: <strong>{{ userName }}</strong>
         </v-alert>
-        <h2 class="mt-10 mb-2">Quantidade de tarefas por categoria:</h2>
-        <v-container class="purple lighten-5 rounded-lg">
+        <v-container class="purple lighten-5 rounded-lg altura-dinamica mt-5">
+          <div class="d-flex justify-center">
+            <h2 class="mt-2 mb-10">Quantidade de tarefas por categoria:</h2>
+          </div>
           <v-row no-gutters style="height: 150px">
             <v-col>
               <div class="d-flex align-center justify-center">
@@ -129,5 +131,9 @@ export default {
   height: 130px !important;
   min-width: 100px !important;
   width: 130px !important;
+}
+
+.altura-dinamica {
+  height: fit-content !important;
 }
 </style>
