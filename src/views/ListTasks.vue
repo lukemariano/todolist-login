@@ -199,9 +199,7 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    this.tasks = await TasksModel.params({
-      status: this.status.OPEN + "&status=" + this.status.FINISHED,
-    }).get();
+    this.tasks = await this.getTasks();
 
     this.isLoading = false;
   },
@@ -211,9 +209,7 @@ export default {
     },
     async confirmRemoveTask() {
       this.taskSelected.delete();
-      this.tasks = await TasksModel.params({
-        status: this.status.OPEN + "&status=" + this.status.FINISHED,
-      }).get();
+      this.tasks = await this.getTasks();
       this.dialog = false;
     },
     async setSelectedTask(id) {
@@ -224,9 +220,7 @@ export default {
       task.status = status;
       await task.save();
 
-      this.tasks = await TasksModel.params({
-        status: this.status.OPEN + "&status=" + this.status.FINISHED,
-      }).get();
+      this.tasks = await this.getTasks();
     },
     isFinished(tarefa) {
       return tarefa.status === this.status.FINISHED;
@@ -236,6 +230,7 @@ export default {
       // desestruturação
       let filter = { ...this.filter };
       filter = this.clean(filter);
+      filter.userId = JSON.parse(localStorage.getItem("authUser")).id;
       this.tasks = await TasksModel.params(filter).get();
     },
     clean(obj) {
@@ -251,9 +246,7 @@ export default {
         titulo: null,
         status: null,
       };
-      this.tasks = await TasksModel.params({
-        status: this.status.OPEN + "&status=" + this.status.FINISHED,
-      }).get();
+      this.tasks = await this.getTasks();
     },
     overduePresente(data) {
       if (!data) {

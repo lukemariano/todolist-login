@@ -7,6 +7,22 @@
       "date": "2022-09-14",
       "userId": 1,
       "id": 1
+    },
+    {
+      "titulo": "Testando user get tasks",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "titulo": "Tarefa userId2",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "id": 3
     }
   ],
   "users": [
@@ -16,6 +32,13 @@
       "nome": "Teste Validation",
       "confirmeSenha": "123456",
       "id": 1
+    },
+    {
+      "email": "lucas@email.com",
+      "senha": "123456",
+      "nome": "Lucas Mariano",
+      "confirmeSenha": "123456",
+      "id": 2
     }
   ]
 }
