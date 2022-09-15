@@ -5,6 +5,7 @@
       "descricao": "aprimorar conhecimentos",
       "status": 2,
       "date": "2022-09-14",
+      "groups": "Estudos",
       "userId": 1,
       "id": 1
     },
@@ -13,6 +14,7 @@
       "descricao": "testing",
       "status": 2,
       "date": "2022-09-15",
+      "groups": "Estudos",
       "userId": 1,
       "id": 2
     },
@@ -21,6 +23,7 @@
       "descricao": "testing",
       "status": 3,
       "date": "2022-09-15",
+      "groups": "Estudos",
       "userId": 1,
       "id": 4
     },
@@ -29,6 +32,7 @@
       "descricao": "dfdfdf",
       "status": 3,
       "date": "2022-09-15",
+      "groups": "Estudos",
       "userId": 1,
       "id": 5
     },
@@ -37,6 +41,7 @@
       "descricao": "ola tarefas",
       "status": 1,
       "date": "2022-09-15",
+      "groups": "Estudos",
       "userId": 2,
       "id": 6
     },
@@ -57,6 +62,51 @@
       "userId": 3,
       "groups": "Fitness",
       "id": 8
+    },
+    {
+      "titulo": "teste forEach",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "groups": "Estudos",
+      "id": 9
+    },
+    {
+      "titulo": "testando task2",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "groups": "Estudos",
+      "id": 10
+    },
+    {
+      "titulo": "testando hipotese",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "groups": "Fitness",
+      "id": 11
+    },
+    {
+      "titulo": "Estudos",
+      "descricao": "jamaica",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 3,
+      "groups": "Estudos",
+      "id": 12
+    },
+    {
+      "titulo": "Testando conhecimentos",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "groups": "Financeiro",
+      "id": 13
     }
   ],
   "users": [

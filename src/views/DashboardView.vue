@@ -33,34 +33,25 @@
         >
           Usuário: <strong>{{ userName }}</strong>
         </v-alert>
-
         <h2 class="mt-10 mb-2">Quantidade de tarefas por categoria:</h2>
-        <v-container class="purple lighten-5">
+        <v-container class="purple lighten-5 rounded-lg">
           <v-row no-gutters style="height: 150px">
             <v-col>
               <div class="d-flex align-center justify-center">
-                <div class="d-flex flex-column align-center mr-10">
-                  asdasa
+                <div
+                  class="d-flex flex-column align-center mr-10"
+                  v-for="(group, index) in contagemGroups"
+                  :key="index"
+                >
+                  {{ index }}
                   <v-progress-circular
                     :rotate="360"
                     :size="100"
                     :width="15"
-                    :value="value"
-                    color="teal"
+                    :value="(group * 100) / tasks.length"
+                    color="purple dark"
                   >
-                    {{ value }}
-                  </v-progress-circular>
-                </div>
-                <div class="d-flex flex-column align-center mr-10">
-                  asdasa
-                  <v-progress-circular
-                    :rotate="360"
-                    :size="100"
-                    :width="15"
-                    :value="value"
-                    color="teal"
-                  >
-                    {{ value }}
+                    {{ (group * 100) / tasks.length }}%
                   </v-progress-circular>
                 </div>
               </div>
@@ -82,6 +73,8 @@ export default {
       tasks: [],
       userIniciais: null,
       userName: null,
+      contagemGroups: {},
+      groupPorcent: null,
     };
   },
   methods: {
@@ -110,6 +103,12 @@ export default {
         this.userName = user.nome;
       }
     },
+    countGroups() {
+      return this.tasks.reduce((a, b) => {
+        a[b.groups] = a[b.groups] ? a[b.groups] + 1 : 1;
+        return a;
+      }, {});
+    },
   },
   computed: {
     isTasksEmpty() {
@@ -118,8 +117,9 @@ export default {
   },
   async created() {
     this.tasks = await this.getTasks();
-    console.log(this.tasks);
     await this.getNameUser();
+    this.contagemGroups = this.countGroups();
+    this.logicaCountGroups();
   },
 };
 </script>
