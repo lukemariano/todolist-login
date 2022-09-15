@@ -1,28 +1,34 @@
 <template>
   <div>
     <div class="container-filtro">
-      <form class="mb-2 style-form mt-12">
-        <v-text-field
-          v-model="filter.titulo"
-          id="titulo"
-          label="Ex: Estudar para a prova"
-          class="mr-2"
-        >
-        </v-text-field>
+      <form class="mb-2 style-form mt-12 flex-column">
+        <div class="d-flex">
+          <v-text-field
+            v-model="filter.titulo"
+            id="titulo"
+            label="Ex: Estudar para a prova"
+            class="mr-2"
+            outlined
+          >
+          </v-text-field>
 
-        <v-select
-          d-inline
-          v-model="filter.status"
-          :items="optionsList"
-          class="mr-2 style-filtro"
-        >
-        </v-select>
-        <v-btn @click="filterTasks" dense dark class="white--text mr-4 ml-2"
-          >Buscar</v-btn
-        >
-        <v-btn @click="clearFilter" dense dark class="white--text"
-          >Limpar filtro</v-btn
-        >
+          <v-select
+            d-inline
+            v-model="filter.status"
+            :items="optionsList"
+            class="mr-2 style-filtro"
+            outlined
+          >
+          </v-select>
+        </div>
+        <div class="d-flex flex-row-reverse">
+          <v-btn @click="filterTasks" dense dark class="white--text mr-4 ml-2"
+            >Buscar</v-btn
+          >
+          <v-btn @click="clearFilter" dense dark class="white--text"
+            >Limpar filtro</v-btn
+          >
+        </div>
       </form>
     </div>
     <template v-if="isLoading">
@@ -51,9 +57,14 @@
           style="width: 50%; margin: 0 auto"
         >
           <div class="style-title-date">
-            <v-card-title :class="{ finishedTask: isFinished(task) }">{{
-              task.titulo.toUpperCase()
-            }}</v-card-title>
+            <v-card-title :class="{ finishedTask: isFinished(task) }"
+              >{{ task.titulo.toUpperCase() }}
+              <v-card-text
+                class="black--text text-h5"
+                :class="{ finishedTask: isFinished(task) }"
+                >{{ task.descricao }}</v-card-text
+              ></v-card-title
+            >
             <v-card-title class="d-flex flex-column"
               ><v-alert
                 :color="colorOverdue(task.date, task.status)"
@@ -68,11 +79,6 @@
               </v-alert></v-card-title
             >
           </div>
-          <v-card-text
-            class="black--text"
-            :class="{ finishedTask: isFinished(task) }"
-            >{{ task.descricao }}</v-card-text
-          >
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -328,12 +334,13 @@ export default {
 
 .style-form {
   display: flex;
-  align-items: center;
-  width: 55%;
+  /* align-items: center; */
+  justify-content: center;
+  width: 30%;
 }
 
 .style-filtro {
-  width: 00px;
+  width: 30%;
 }
 
 .style-title-date {
