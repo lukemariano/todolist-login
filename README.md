@@ -40,4 +40,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Login screen
 ![image](https://user-images.githubusercontent.com/104439152/190237941-762fafd1-e4d0-4e7b-90a9-44168ec88065.png)
 
+### Dashboard Preview
+![image](https://user-images.githubusercontent.com/104439152/190504677-44aa785b-6b99-4faa-9dd7-2369b2c41b99.png)
+
+
 
