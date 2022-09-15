@@ -28,6 +28,7 @@ export default {
     return {
       form: {
         tipo: null,
+        userId: JSON.parse(localStorage.getItem("authUser")).id,
       },
     };
   },

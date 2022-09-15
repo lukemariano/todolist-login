@@ -150,7 +150,9 @@ export default {
       return new Date().toISOString().split("T")[0];
     },
     async getGroups() {
-      let groups = await GroupsModel.get();
+      let groups = await GroupsModel.params({
+        userId: JSON.parse(localStorage.getItem("authUser")).id,
+      }).get();
       for (let group of groups) {
         this.form.groups.push(group.tipo);
       }

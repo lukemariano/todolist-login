@@ -125,6 +125,15 @@
       "userId": 2,
       "groups": "Programação",
       "id": 15
+    },
+    {
+      "titulo": "OLá dados",
+      "descricao": "salve",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 2,
+      "groups": "Dados",
+      "id": 16
     }
   ],
   "users": [
@@ -172,12 +181,22 @@
       "id": 5
     },
     {
-      "categoria": "Exercicio",
+      "tipo": "Exercicio",
       "id": 6
     },
     {
       "tipo": "Testing",
       "id": 7
+    },
+    {
+      "tipo": "teste de vinculagem",
+      "userId": 3,
+      "id": 8
+    },
+    {
+      "tipo": "Dados",
+      "userId": 2,
+      "id": 9
     }
   ]
 }
