@@ -48,6 +48,15 @@
       "userId": 1,
       "groups": "Estudos",
       "id": 7
+    },
+    {
+      "titulo": "Teste",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-15",
+      "userId": 3,
+      "groups": "Fitness",
+      "id": 8
     }
   ],
   "users": [
@@ -64,6 +73,13 @@
       "nome": "Lucas Mariano",
       "confirmeSenha": "123456",
       "id": 2
+    },
+    {
+      "email": "lucca@email.com",
+      "senha": "123456",
+      "nome": "Lucca",
+      "confirmeSenha": "123456",
+      "id": 3
     }
   ],
   "groups": [

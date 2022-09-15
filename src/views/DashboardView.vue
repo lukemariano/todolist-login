@@ -99,10 +99,16 @@ export default {
 
       // pega inicias de nome composto
       let iniciaisNome = user.nome.split(" ");
-      let inicial1 = iniciaisNome[0][0];
-      let inicial2 = iniciaisNome[1][0];
-      this.userIniciais = inicial1 + inicial2;
-      this.userName = user.nome;
+      try {
+        let inicial1 = iniciaisNome[0][0];
+        let inicial2 = iniciaisNome[1][0];
+        this.userIniciais = inicial1 + inicial2;
+        this.userName = user.nome;
+      } catch {
+        let inicial1 = iniciaisNome[0][0];
+        this.userIniciais = inicial1;
+        this.userName = user.nome;
+      }
     },
   },
   computed: {
