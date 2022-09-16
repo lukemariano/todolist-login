@@ -66,7 +66,7 @@
     {
       "titulo": "teste forEach",
       "descricao": "testing",
-      "status": 1,
+      "status": 2,
       "date": "2022-09-15",
       "userId": 2,
       "groups": "Estudos",
@@ -75,7 +75,7 @@
     {
       "titulo": "testando task2",
       "descricao": "testing",
-      "status": 1,
+      "status": 2,
       "date": "2022-09-15",
       "userId": 2,
       "groups": "Estudos",
@@ -84,7 +84,7 @@
     {
       "titulo": "testando hipotese",
       "descricao": "testing",
-      "status": 1,
+      "status": 2,
       "date": "2022-09-15",
       "userId": 2,
       "groups": "Fitness",
@@ -134,6 +134,42 @@
       "userId": 2,
       "groups": "Dados",
       "id": 16
+    },
+    {
+      "titulo": "Testando dinamicidade",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-16",
+      "userId": 2,
+      "groups": "Testing",
+      "id": 17
+    },
+    {
+      "titulo": "Testando",
+      "descricao": "testing",
+      "status": 1,
+      "date": "2022-09-16",
+      "userId": 4,
+      "groups": [],
+      "id": 18
+    },
+    {
+      "titulo": "sdsdsd",
+      "descricao": "sdsdsd",
+      "status": 1,
+      "date": "2022-09-16",
+      "userId": 5,
+      "groups": "otaku",
+      "id": 20
+    },
+    {
+      "titulo": "sdsdsd",
+      "descricao": "sdsdsd",
+      "status": 1,
+      "date": "2022-09-16",
+      "userId": 5,
+      "groups": "programador",
+      "id": 21
     }
   ],
   "users": [
@@ -157,6 +193,20 @@
       "nome": "Lucca",
       "confirmeSenha": "123456",
       "id": 3
+    },
+    {
+      "email": "roger@email.com",
+      "senha": "123456",
+      "nome": "Roger Camargo",
+      "confirmeSenha": "123456",
+      "id": 4
+    },
+    {
+      "email": "test@email.com",
+      "senha": "123456",
+      "nome": "Testando Alteração",
+      "confirmeSenha": "123456",
+      "id": 5
     }
   ],
   "groups": [
@@ -185,18 +235,24 @@
       "id": 6
     },
     {
-      "tipo": "Testing",
-      "id": 7
-    },
-    {
       "tipo": "teste de vinculagem",
       "userId": 3,
       "id": 8
     },
     {
-      "tipo": "Dados",
+      "tipo": "Testing",
       "userId": 2,
       "id": 9
+    },
+    {
+      "tipo": "otaku",
+      "userId": 5,
+      "id": 11
+    },
+    {
+      "tipo": "programador",
+      "userId": 5,
+      "id": 12
     }
   ]
 }

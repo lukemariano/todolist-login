@@ -6,6 +6,7 @@ import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import DashboardView from "../views/DashboardView.vue";
 import FormCategoria from "../views/FormCategoria.vue";
+import RemoveCategoriaForm from "../views/RemoveCategoriaForm.vue";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
     path: "/formCategoria",
     name: "formCategoria",
     component: FormCategoria,
+  },
+  {
+    path: "/removerCategoria",
+    name: "removecategoria",
+    component: RemoveCategoriaForm,
   },
 ];
 

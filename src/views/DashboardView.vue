@@ -6,6 +6,9 @@
         <v-btn to="/form" dense dark class="white--text mt-10"
           >Criar tarefa</v-btn
         >
+        <v-btn to="/formCategoria" class="mt-9 mr-3 white--text" color="black"
+          >Adicionar Categoria</v-btn
+        >
       </div>
     </template>
     <template v-else>
@@ -52,7 +55,7 @@
                 >
                   <v-alert shaped dark color="purple">
                     <p class="font-weight-bold text-h6" color="white">
-                      {{ index }}
+                      {{ index.toUpperCase() }}
                     </p>
                   </v-alert>
                   <v-progress-circular
@@ -71,9 +74,14 @@
             </v-col>
           </v-row>
         </v-container>
-        <v-btn to="/formCategoria" class="mt-9 white--text" color="purple"
-          >Adicionar Categoria</v-btn
-        >
+        <div>
+          <v-btn to="/formCategoria" class="mt-9 mr-3 white--text" color="black"
+            >Adicionar Categoria</v-btn
+          >
+          <v-btn to="/removerCategoria" class="mt-9 white--text" color="black"
+            >Remover uma Categoria</v-btn
+          >
+        </div>
       </div>
     </template>
   </div>
@@ -119,6 +127,11 @@ export default {
         this.userName = user.nome;
       }
     },
+  },
+  computed: {
+    isTasksEmpty() {
+      return this.tasks.length === 0;
+    },
     countGroups() {
       return this.tasks.reduce((a, b) => {
         a[b.groups] = a[b.groups] ? a[b.groups] + 1 : 1;
@@ -126,15 +139,15 @@ export default {
       }, {});
     },
   },
-  computed: {
-    isTasksEmpty() {
-      return this.tasks.length === 0;
-    },
-  },
   async created() {
     this.tasks = await this.getTasks();
     await this.getNameUser();
-    this.contagemGroups = this.countGroups();
+  },
+  watch: {
+    async countGroups(newValue) {
+      this.contagemGroups = newValue;
+      this.tasks = await this.getTasks();
+    },
   },
 };
 </script>
