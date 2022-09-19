@@ -37,15 +37,6 @@
       "id": 5
     },
     {
-      "titulo": "User task 2",
-      "descricao": "ola tarefas",
-      "status": 2,
-      "date": "2022-09-15",
-      "groups": "Estudos",
-      "userId": 2,
-      "id": 6
-    },
-    {
       "titulo": "Testando grupos",
       "descricao": "testing",
       "status": 1,
@@ -64,33 +55,6 @@
       "id": 8
     },
     {
-      "titulo": "teste forEach",
-      "descricao": "testing",
-      "status": 2,
-      "date": "2022-09-15",
-      "userId": 2,
-      "groups": "Estudos",
-      "id": 9
-    },
-    {
-      "titulo": "testando task2",
-      "descricao": "testing",
-      "status": 2,
-      "date": "2022-09-15",
-      "userId": 2,
-      "groups": "Estudos",
-      "id": 10
-    },
-    {
-      "titulo": "testando hipotese",
-      "descricao": "testing",
-      "status": 2,
-      "date": "2022-09-15",
-      "userId": 2,
-      "groups": "Fitness",
-      "id": 11
-    },
-    {
       "titulo": "Estudos",
       "descricao": "jamaica",
       "status": 1,
@@ -100,48 +64,12 @@
       "id": 12
     },
     {
-      "titulo": "Testando conhecimentos",
-      "descricao": "testing",
-      "status": 1,
-      "date": "2022-09-15",
-      "userId": 2,
-      "groups": "Financeiro",
-      "id": 13
-    },
-    {
-      "titulo": "Testando atualização da página",
-      "descricao": "testing",
-      "status": 1,
-      "date": "2022-09-15",
-      "userId": 2,
-      "groups": "Estudos",
-      "id": 14
-    },
-    {
-      "titulo": "Testando categorias adicionadas",
-      "descricao": "testing",
-      "status": 1,
-      "date": "2022-09-15",
-      "userId": 2,
-      "groups": "Programação",
-      "id": 15
-    },
-    {
-      "titulo": "OLá dados",
-      "descricao": "salve",
-      "status": 1,
-      "date": "2022-09-15",
-      "userId": 2,
-      "groups": "Dados",
-      "id": 16
-    },
-    {
       "titulo": "Testando dinamicidade",
       "descricao": "testing",
       "status": 1,
       "date": "2022-09-16",
       "userId": 2,
-      "groups": "Testing",
+      "groups": "nullSet",
       "id": 17
     },
     {
@@ -165,11 +93,47 @@
     {
       "titulo": "sdsdsd",
       "descricao": "sdsdsd",
-      "status": 1,
+      "status": 2,
       "date": "2022-09-16",
       "userId": 5,
       "groups": "programador",
       "id": 21
+    },
+    {
+      "titulo": "sasasas",
+      "descricao": "asasas",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 2,
+      "groups": "nullSet",
+      "id": 22
+    },
+    {
+      "titulo": "asasasa",
+      "descricao": "asasas",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 2,
+      "groups": "nullSet",
+      "id": 23
+    },
+    {
+      "titulo": "asasas",
+      "descricao": "asasas",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 2,
+      "groups": "nullSet",
+      "id": 24
+    },
+    {
+      "titulo": "testando edit categoria",
+      "descricao": "sadsffs",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 2,
+      "groups": "TesteCateg",
+      "id": 25
     }
   ],
   "users": [
@@ -240,11 +204,6 @@
       "id": 8
     },
     {
-      "tipo": "Testing",
-      "userId": 2,
-      "id": 9
-    },
-    {
       "tipo": "otaku",
       "userId": 5,
       "id": 11
@@ -253,6 +212,16 @@
       "tipo": "programador",
       "userId": 5,
       "id": 12
+    },
+    {
+      "tipo": "nullSet",
+      "userId": 2,
+      "id": 13
+    },
+    {
+      "tipo": "TesteCateg",
+      "userId": 2,
+      "id": 14
     }
   ]
 }

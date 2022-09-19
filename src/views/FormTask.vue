@@ -127,7 +127,7 @@ export default {
       this.form.titulo = null;
       this.form.descricao = null;
       this.form.tag = null;
-      this.form.groups = null;
+      this.form.groups = [];
     },
     async salvarTask() {
       // valida form e só salva se não tiverem erros
@@ -153,8 +153,18 @@ export default {
       let groups = await GroupsModel.params({
         userId: JSON.parse(localStorage.getItem("authUser")).id,
       }).get();
-      for (let group of groups) {
-        this.form.groups.push(group.tipo);
+      if (this.methodSave === "update") {
+        this.form.groups = [];
+        for (let group of groups) {
+          if (group.tipo === null) {
+            return;
+          }
+          this.form.groups.push(group.tipo);
+        }
+      } else {
+        for (let group of groups) {
+          this.form.groups.push(group.tipo);
+        }
       }
     },
   },
@@ -201,6 +211,7 @@ export default {
       this.methodSave = "update";
       this.form = await TasksModel.find(this.$route.params.id);
       this.tituloForm = "Editar tarefa:";
+      await this.getGroups();
     }
     // inicializar form com botão desabilitado
     if (this.methodSave === "new") {

@@ -52,10 +52,17 @@ export default {
       let req = await GroupsModel.params({ tipo: this.form.groups }).get();
       req = req[0];
 
-      // deletando a tarefa atrelada a categoria com efeito cascata
-      let delTasks = await TasksModel.params({ groups: req.tipo }).get();
-      delTasks = delTasks[0];
-      delTasks.delete();
+      // settar categoria como nula
+      let nullTasks = await TasksModel.params({ groups: req.tipo }).get();
+      // nullTasks = nullTasks[0];
+
+      //editando todas as tasks para null value
+      for (let task of nullTasks) {
+        let removeTask = await TasksModel.find(task.id);
+        removeTask.groups = null;
+        removeTask.save();
+        console.log(removeTask);
+      }
 
       // deletando categoria cascade mode
 

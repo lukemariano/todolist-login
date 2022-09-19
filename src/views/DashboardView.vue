@@ -53,22 +53,24 @@
                   v-for="(group, index) in contagemGroups"
                   :key="index"
                 >
-                  <v-alert shaped dark color="purple">
-                    <p class="font-weight-bold text-h6" color="white">
-                      {{ index.toUpperCase() }}
-                    </p>
-                  </v-alert>
-                  <v-progress-circular
-                    :rotate="360"
-                    :size="110"
-                    :width="18"
-                    :value="(group * 100) / tasks.length"
-                    color="purple dark"
-                  >
-                    <span class="font-weight-bold text-h6"
-                      >{{ ((group * 100) / tasks.length).toFixed(1) }}%</span
+                  <template v-if="index !== 'null'">
+                    <v-alert shaped dark color="purple">
+                      <p class="font-weight-bold text-h6" color="white">
+                        {{ index.toUpperCase() }}
+                      </p>
+                    </v-alert>
+                    <v-progress-circular
+                      :rotate="360"
+                      :size="110"
+                      :width="18"
+                      :value="(group * 100) / tasks.length"
+                      color="purple dark"
                     >
-                  </v-progress-circular>
+                      <span class="font-weight-bold text-h6"
+                        >{{ ((group * 100) / tasks.length).toFixed(1) }}%</span
+                      >
+                    </v-progress-circular>
+                  </template>
                 </div>
               </div>
             </v-col>

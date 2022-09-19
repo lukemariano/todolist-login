@@ -76,6 +76,7 @@
               >
                 {{ overduePresente(task.date) }} </v-alert
               ><v-alert shaped dark color="purple">
+                <template v-if="task.groups === null"> Sem tag </template>
                 {{ task.groups }}
               </v-alert></v-card-title
             >
