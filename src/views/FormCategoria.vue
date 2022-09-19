@@ -7,7 +7,7 @@
           outlined
           color="purple"
           class="mt-5"
-          label="Titulo da tarefa"
+          label="Titulo da categoria"
           v-model="form.tipo"
         ></v-text-field>
         <v-btn color="purple" class="mr-4 white--text" @click="salvarCategoria">

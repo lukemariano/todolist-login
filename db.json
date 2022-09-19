@@ -134,6 +134,42 @@
       "userId": 2,
       "groups": "TesteCateg",
       "id": 25
+    },
+    {
+      "titulo": "Testando features",
+      "descricao": "sdjoshdbjsnd",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 6,
+      "groups": "Nuxtjs",
+      "id": 26
+    },
+    {
+      "titulo": "ghgfgh",
+      "descricao": "fghgfhgf",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 6,
+      "groups": null,
+      "id": 30
+    },
+    {
+      "titulo": "fghdfgfg",
+      "descricao": "dfgdfgdf",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 6,
+      "groups": "teste responsivo",
+      "id": 31
+    },
+    {
+      "titulo": "dfgdfgdf",
+      "descricao": "gfedgdfgf",
+      "status": 1,
+      "date": "2022-09-19",
+      "userId": 6,
+      "groups": "Nuxtjs",
+      "id": 32
     }
   ],
   "users": [
@@ -171,6 +207,13 @@
       "nome": "Testando Alteração",
       "confirmeSenha": "123456",
       "id": 5
+    },
+    {
+      "email": "dba@email.com",
+      "senha": "123456",
+      "nome": "Lucas Dba",
+      "confirmeSenha": "123456",
+      "id": 6
     }
   ],
   "groups": [
@@ -222,6 +265,16 @@
       "tipo": "TesteCateg",
       "userId": 2,
       "id": 14
+    },
+    {
+      "tipo": "Nuxtjs",
+      "userId": 6,
+      "id": 16
+    },
+    {
+      "tipo": "teste responsivo",
+      "userId": 6,
+      "id": 17
     }
   ]
 }

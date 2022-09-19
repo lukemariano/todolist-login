@@ -53,7 +53,7 @@
                   v-for="(group, index) in contagemGroups"
                   :key="index"
                 >
-                  <template v-if="index !== 'null'">
+                  <template>
                     <v-alert shaped dark color="purple">
                       <p class="font-weight-bold text-h6" color="white">
                         {{ index.toUpperCase() }}
@@ -63,11 +63,11 @@
                       :rotate="360"
                       :size="110"
                       :width="18"
-                      :value="(group * 100) / tasks.length"
+                      :value="((group * 100) / tamanhoGroups).toFixed(1)"
                       color="purple dark"
                     >
                       <span class="font-weight-bold text-h6"
-                        >{{ ((group * 100) / tasks.length).toFixed(1) }}%</span
+                        >{{ ((group * 100) / tamanhoGroups).toFixed(1) }}%</span
                       >
                     </v-progress-circular>
                   </template>
@@ -101,6 +101,7 @@ export default {
       userName: null,
       contagemGroups: {},
       groupPorcent: null,
+      tamanhoGroups: null,
     };
   },
   methods: {
@@ -129,6 +130,13 @@ export default {
         this.userName = user.nome;
       }
     },
+    contarCategorias() {
+      for (let task of this.tasks) {
+        if (task.groups !== null) {
+          this.tamanhoGroups += 1;
+        }
+      }
+    },
   },
   computed: {
     isTasksEmpty() {
@@ -137,6 +145,9 @@ export default {
     countGroups() {
       return this.tasks.reduce((a, b) => {
         a[b.groups] = a[b.groups] ? a[b.groups] + 1 : 1;
+        if (b.groups === null) {
+          delete a[b.groups];
+        }
         return a;
       }, {});
     },
@@ -144,6 +155,10 @@ export default {
   async created() {
     this.tasks = await this.getTasks();
     await this.getNameUser();
+    console.log(this.tasks);
+    console.log(this.contagemGroups);
+    this.contarCategorias();
+    console.log(this.tamanhoGroups);
   },
   watch: {
     async countGroups(newValue) {
